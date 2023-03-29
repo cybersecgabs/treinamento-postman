@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "4c25278c-8d11-403c-8c53-568c9da659ec",
+		"name": "Runner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22218831"
+	},
+	"item": [
+		{
+			"name": "Popular CITY_ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.environment.set(\"CITY_ID\", json[Math.floor(Math.random() * 60)].id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://brasilapi.com.br/api/cptec/v1/cidade",
+					"protocol": "https",
+					"host": [
+						"brasilapi",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"cptec",
+						"v1",
+						"cidade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Previsão meteorológica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().cidade}\" é uma STRING`, function () {\r",
+							"    pm.expect(pm.response.json().cidade).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().estado}\" é uma STRING`, function () {\r",
+							"    pm.expect(pm.response.json().estado).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().atualizado_em}\" é uma STRING`, function () {\r",
+							"    pm.expect(pm.response.json().atualizado_em).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().clima[0].data}\" é uma STRING`, function () {\r",
+							"    pm.expect(pm.response.json().clima[0].data).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().clima[0].min}\" é um NÚMERO`, function () {\r",
+							"    pm.expect(pm.response.json().clima[0].min).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(`\"${pm.response.json().clima[0].max}\" é um NÚMERO`, function () {\r",
+							"    pm.expect(pm.response.json().clima[0].max).to.be.a('number');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://brasilapi.com.br/api/cptec/v1/clima/previsao/{{CITY_ID}}",
+					"protocol": "https",
+					"host": [
+						"brasilapi",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"cptec",
+						"v1",
+						"clima",
+						"previsao",
+						"{{CITY_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

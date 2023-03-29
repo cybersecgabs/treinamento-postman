@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "1973375c-01a4-43ca-8ee2-49f46d33e860",
+		"name": "Variáveis + Coleção",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22218831"
+	},
+	"item": [
+		{
+			"name": "Verificar variável",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?var={{VARIAVEL_1}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "var",
+							"value": "{{VARIAVEL_1}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Acessando variáveis no Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"VARIAVEL_LOCAL\", \"13\")\r",
+							"pm.collectionVariables.set(\"VARIAVEL_COLLECTION\", \"777\")\r",
+							"pm.environment.set(\"VARIAVEL_1\", \"333\")\r",
+							"pm.globals.set(\"VARIAVEL_GLOBAL\", \"111\")\r",
+							"\r",
+							"console.log(\"O valor da variável VARIAVEL_LOCAL é: \" + pm.variables.get(\"VARIAVEL_LOCAL\"));\r",
+							"console.log(\"O valor da variável VARIAVEL_COLLECTION é: \" + pm.collectionVariables.get(\"VARIAVEL_COLLECTION\"));\r",
+							"console.log(\"O valor da variável VARIAVEL_1 é: \" + pm.environment.get(\"VARIAVEL_1\"));\r",
+							"console.log(\"O valor da variável VARIAVEL_GLOBAL é: \" + pm.globals.get(\"VARIAVEL_GLOBAL\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?var={{AMBIENTE_1}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "var",
+							"value": "{{AMBIENTE_1}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Variáveis Dinâmicas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Um ID único global gerado é: \" + pm.variables.replaceIn(\"{{$guid}}\"));\r",
+							"\r",
+							"console.log(\"Um timestamp com a hora atual em formato Unix Epoch Time é: \" + pm.variables.replaceIn(\"{{$timestamp}}\"));\r",
+							"\r",
+							"console.log(\"Um nUúmero inteiro aleatório entre 0 e 1.000.000 é: \" + pm.variables.replaceIn(\"{{$randomInt}}\"));\r",
+							"\r",
+							"console.log(\"Um IP aleatório é: \" + pm.variables.replaceIn(\"{{$randomIP}}\"));\r",
+							"\r",
+							"console.log(\"Um Nome Aleatório é: \" + pm.variables.replaceIn(\"{{$randomFirstName}}\"));\r",
+							"\r",
+							"console.log(\"Uma Área de trabalho aleatória é: \" + pm.variables.replaceIn(\"{{$randomJobArea}}\"));\r",
+							"\r",
+							"console.log(\"Um Número de telefone aleatório é: \" + pm.variables.replaceIn(\"{{$randomPhoneNumber}}\"));\r",
+							"\r",
+							"console.log(\"Uma cidade aleatória é: \" + pm.variables.replaceIn(\"{{$randomCity}}\"));\r",
+							"\r",
+							"// https://learning.postman.com/docs/writing-scripts/script-references/variables-list/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?var={{$randomInt}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "var",
+							"value": "{{$randomInt}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Random User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"let LOCALCITY = jsonData.results[0].location.city\r",
+							"\r",
+							"pm.environment.set(\"CITY\", LOCALCITY)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://randomuser.me/api/",
+					"protocol": "https",
+					"host": [
+						"randomuser",
+						"me"
+					],
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JSONPlaceHolder - GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{VARIAVEL_1}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{VARIAVEL_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JSONPlaceHolder - POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"{{TITLE}}\",\r\n    \"body\": \"{{BODY}}\",\r\n    \"userId\": 10\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "VARIAVEL_COLLECTION",
+			"value": ""
+		},
+		{
+			"key": "VARIAVEL_1",
+			"value": "5",
+			"type": "string"
+		}
+	]
+}
