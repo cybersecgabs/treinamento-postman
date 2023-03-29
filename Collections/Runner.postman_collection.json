@@ -15,7 +15,7 @@
 						"exec": [
 							"let json = JSON.parse(responseBody);\r",
 							"\r",
-							"pm.environment.set(\"CITY_ID\", json[Math.floor(Math.random() * 60)].id)"
+							"pm.globals.set(\"CITY_ID\", json[Math.floor(Math.random() * 60)].id)"
 						],
 						"type": "text/javascript"
 					}
