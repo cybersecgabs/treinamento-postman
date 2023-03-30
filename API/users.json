@@ -1,3 +1,24 @@
 {
-    "users": []
+    "users": [
+        {
+            "nome": "Yubaba",
+            "email": "yubaba@gmail.com",
+            "id": 1
+        },
+        {
+            "nome": "Calcifer",
+            "email": "calcifer@gmail.com",
+            "id": 2
+        },
+        {
+            "nome": "Howl",
+            "email": "howl@gmail.com",
+            "id": 3
+        },
+        {
+            "nome": "Totoro",
+            "email": "totoro@gmail.com",
+            "id": 4
+        }
+    ]
 }

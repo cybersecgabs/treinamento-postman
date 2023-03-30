@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "1973375c-01a4-43ca-8ee2-49f46d33e860",
+		"_postman_id": "3f0789c7-a382-4245-80d8-572ca0d718cc",
 		"name": "Variáveis + Coleção",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "22218831"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -122,48 +121,6 @@
 							"key": "var",
 							"value": "{{$randomInt}}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Random User",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let jsonData = JSON.parse(responseBody);\r",
-							"\r",
-							"let LOCALCITY = jsonData.results[0].location.city\r",
-							"\r",
-							"pm.environment.set(\"CITY\", LOCALCITY)"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://randomuser.me/api/",
-					"protocol": "https",
-					"host": [
-						"randomuser",
-						"me"
-					],
-					"path": [
-						"api",
-						""
 					]
 				}
 			},

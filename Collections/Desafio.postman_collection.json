@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "0a850e31-5cbd-4402-865a-d00b0c32ae17",
+		"_postman_id": "5cac7f2b-7f3f-49e3-bcf3-e6e55e723265",
 		"name": "Desafio",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "22218831"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -54,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\" : \"Gabriel\",\r\n    \"email\": \"teste@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"nome\" : \"Exemplo\",\r\n    \"email\": \"exemplo@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -160,7 +159,8 @@
 					"path": [
 						"deleteallusers"
 					]
-				}
+				},
+				"description": "Você é bem observador, parabéns!\n\nAinda existe mais um endpoint para explorar...\n\nQual o nome mesmo da ferramenta que foi demonstrado para utilizar as collections e os environments via linha de comando?"
 			},
 			"response": []
 		}

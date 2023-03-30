@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Bem Vindo ao desafio! Sinta-se a vontade a pedir ajuda caso necessite!"}
+    return {"message": "Bem Vindo ao desafio! Sinta-se a vontade e verifique a DOCUMENTAÇÃO"}
 
 @app.get("/users")
 async def read_users():
@@ -86,3 +86,19 @@ async def update_user(user_id: int, usuario: dict):
             return {"mensagem": f"Usuário com id {user_id} atualizado com sucesso"}
 
     raise HTTPException(status_code=404, detail=f"Usuário com id {user_id} não encontrado")
+
+@app.get("/newman")
+async def newman():
+    return {"message": "Meus parabéns! Você acompanhou muito bem o treinamento! (Ou viu direto no código kkk), mais ainda existe um endpoint SECRET..."}
+
+@app.post("/secret")
+async def secret(secret: dict):
+    try:
+        if secret["secret"] == "allure":
+            return {
+                "message": "Mais uma etapa concluída! acesse o seguinte site: http://t.me/DesafioPostmanPrimeBot (OBS. Necessita ter conta no telegram)"
+            }
+    except:
+        return {
+            "message": "Quase lá! Que tal enviar um body com a chave 'secret' e no valor o nome do report usado junto ao newman?" 
+        }
